@@ -1,0 +1,34 @@
+{
+  "name": "test-setup1",
+  "appName": "TestSetup1",
+  "version": "0.0.0",
+  "dependencies": {
+    "connect": "~2.10.x"
+  },
+  "devDependencies": {
+    "grunt-contrib-connect": "0.3.0",
+    "grunt": "~0.4",
+    "thorax-inspector": "0.2.6",
+    "open": "0.0.3",
+    "bower": "~0.10",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-clean": "~0.5.0",
+    "matchdep": "~0.1.2",
+    "grunt-cli": "~0.1.9",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-requirejs": "~0.4.1",
+    "grunt-contrib-handlebars": "~0.5.10",
+    "connect-livereload": "~0.3.0",
+    "grunt-contrib-cssmin": "~0.6.2",
+    "load-grunt-config": "~0.6.0",
+    "require-handlebars-plugin": "git://github.com/SlexAxton/require-handlebars-plugin.git"
+  },
+  "scripts": {
+    "start": "node ./server.js",
+    "test": "node ./node_modules/.bin/grunt test"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  }
+}

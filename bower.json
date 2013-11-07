@@ -1,0 +1,13 @@
+{
+  "name": "test-setup1",
+  "version": "0.0.0",
+  "dependencies": {
+    "requirejs": "~2.1",
+    "thorax": "~2.0",
+    "underscore": "1.4.4",
+    "handlebars": "1.0.0",
+    "backbone": "1.0.0",
+    "almond": "~0.2.6",
+    "jquery": "1.9.0"
+  }
+}
