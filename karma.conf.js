@@ -5,18 +5,20 @@ module.exports = function(config) {
   config.set({
 
     // base path, that will be used to resolve files and exclude
-    basePath: '',
+    basePath: '.',
 
 
     // frameworks to use
-    frameworks: ['mocha', 'requirejs', 'chai'],
+    frameworks: ['mocha', 'requirejs'],
 
 
-    // list of files / patterns to load in the browser
+    // list of files / patterns to serve, but not include in page
     files: [
       {pattern: 'js/**/*.{js,coffee}', included: false},
       {pattern: 'test/**/*.spec.{js,coffee}', included: false},
-      'test/main.js'
+      {pattern: 'bower_components/**/*.js', included: false},
+      {pattern: 'test/test-setup.js', included: false},
+      'test/main.karma.js'
     ],
 
 

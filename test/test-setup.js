@@ -1,9 +1,4 @@
 define(function(require) {
-  // mocha and friends
-  require('mocha');
-  global.mocha.checkLeaks();
-  global.mocha.setup('bdd');
-
   global.sinon = require("sinon");
   global.chai = require("chai");
   global.should = require("chai").should();
@@ -24,11 +19,4 @@ define(function(require) {
   global.Handlebars = require('handlebars');
   global.Backbone = require('backbone');
   global.Thorax = require('thorax');
-
-  // require test files, then run mocha when they're async loaded
-  require([
-    './base.spec'
-  ], function() { // run mocha
-    global.mocha.run();
-  });
 });
