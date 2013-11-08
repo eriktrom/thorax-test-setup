@@ -12,6 +12,7 @@ define(function(require) {
   require([
     './base.spec',
     './app.spec',
+    'cs!./app-cs.spec'
   ], function() { // run mocha
     global.mocha.run();
   });

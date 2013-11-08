@@ -4,6 +4,8 @@
 // - view tests
 // - handlebars helper tests
 //
+
+// don't need to wrap in define if you don't need a dependency
 describe('something', function () {
   it('should do something', function () {
     expect(true).to.be.true;
@@ -41,4 +43,6 @@ define(['views/root'], function(RootView) {
     });
 
   });
+
 });
+

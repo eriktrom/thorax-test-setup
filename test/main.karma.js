@@ -11,7 +11,9 @@ for (var file in window.__karma__.files) {
 require.config({
   // karma serves files from /base (relative to karma.conf.js, aka, ../base)
   // modules in this app expect paths relative to js/, we don't want ruin that
-  // so in test/main.js(this file), our baseUrl should be ../base/js
+  // you'd think we'd therefore want ../base/js, but karma won't fingerprint files it doesn't
+  // serve, causing ugly output and slowness(no caching), thus remove the relativeness
+  // of require by using / but gain the cached files.
   baseUrl: '/base/js',
   // load test files we grabbed above
   // start the test run, once require is done with async loading

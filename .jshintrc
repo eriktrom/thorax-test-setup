@@ -1,4 +1,15 @@
-{
+{  "predef": [
+    "document",
+    "window",
+    "location",
+    "setTimeout",
+    "$",
+    "define",
+    "describe",
+    "before",
+    "after",
+    "it"
+  ],
     "node": true,
     "es5": true,
     "esnext": true,
