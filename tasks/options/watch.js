@@ -3,29 +3,39 @@ var grunt = require('grunt');
 module.exports = {
   options: {
     livereload: grunt.config('settings.liveReloadPort'),
-    debounceDelay: 20
+    debounceDelay: 0,
+    interval: 20
   },
   handlebars: {
     files: [grunt.config('paths.templates') + '/**/*.{hbs,handlebars}'],
     tasks: ['scripts:development']
   },
-  scripts: {
-    files: [
-      grunt.config('paths.js') + '/**/*.{js,coffee}'
-    ],
-    tasks: ['scripts:development']
-  },
+  // scripts: {
+  //   files: [
+  //     grunt.config('paths.js') + '/**/*.{js,coffee}'
+  //   ],
+  //   tasks: ['scripts:development']
+  // },
   styles: {
     files: [grunt.config('paths.css') + '/**/*.{css,sass,scss,less,styl}'],
     tasks: ['styles:development']
   },
-  other: {
+  // TODO(karma-grunt): setup karma completely inside of grunt
+  go: {
+    // any files related to tests, including templates(compiled)
+    // TODO(CS): coffescript support
     files: [
-      'public/**/*',
       grunt.config('paths.js') + '/**/*.{js,coffee}',
-      '!' + grunt.config('paths.js') + '/templates/**/*.{js,coffee}',
+      '!' + grunt.config('paths.js') + '!js/templates/**/*.{js,coffee}',
       'tmp/templates/**/*.js', // make paths.--
       'test/**/*'
+    ],
+    tasks: ['karma:server:run']
+  },
+  other: {
+    // like images, fonts
+    files: [
+      'public/**/*'
     ]
   }
 };

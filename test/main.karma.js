@@ -20,6 +20,7 @@ require.config({
   // start the test run, once require is done with async loading
   deps: deps,
   callback: window.__karma__.start,
+  // TODO: DRY require.js paths/shims
   paths: {
     'thorax': '/base/bower_components/thorax/thorax',
     'handlebars': '/base/bower_components/handlebars/handlebars.runtime',
@@ -28,7 +29,8 @@ require.config({
     'backbone': '/base/bower_components/backbone/backbone',
     'sinon': '/base/bower_components/sinon/lib/sinon',
     'sinon-chai': '/base/bower_components/sinon-chai/lib/sinon-chai',
-    'chai': '/base/bower_components/chai/chai'
+    'chai': '/base/bower_components/chai/chai',
+    'templates': '/base/tmp/templates'
   },
   shim: {
     'handlebars': {

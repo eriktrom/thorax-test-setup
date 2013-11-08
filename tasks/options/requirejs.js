@@ -14,10 +14,16 @@
 //     dist/main.js.
 
 
+// TODO: DRY require.js paths/shims
+// - search everywhere for the above phrase to find them all(or use sublime plugin)
+// The short of it is this isn't needed and is slow, only use for production
+// The long of it is coffeescript support needs to be handled and the duplication
+// of paths and shims needs to be handled.
+
 var grunt = require('grunt');
 
 module.exports = {
-  development: getRequireJSOptions('development'),
+  // development: getRequireJSOptions('development'),
   production: getRequireJSOptions('production')
 };
 
@@ -29,6 +35,7 @@ function merge(original, updates) {
 
 function getRequireJSOptions(env) {
   var options = {
+    // TODO: DRY require.js paths/shims
     paths: {
       'jquery': '../bower_components/jquery/jquery',
       'underscore': '../bower_components/underscore/underscore',
@@ -52,20 +59,21 @@ function getRequireJSOptions(env) {
         exports: 'Thorax',
         deps: ['handlebars', 'backbone']
       },
-      'bootstrap': {
+      'bootstrap': { // TODO: generator is outputting bootstrap when option is not chosen(likely to leave b/c only going to be used for less anyway?)
         deps: ['jquery']
       }
     }
   };
 
-  var devOptions = {
-    appDir: grunt.config('paths.js'),
-    baseUrl: './',
-    dir: grunt.config('paths.output.js'),
-    keepBuildDir: true,
-    optimize: 'none',
-    modules: [{name: 'main'}]
-  };
+  // I should have never been born
+  // var devOptions = {
+  //   appDir: grunt.config('paths.js'),
+  //   baseUrl: './',
+  //   dir: grunt.config('paths.output.js'),
+  //   keepBuildDir: true,
+  //   optimize: 'none',
+  //   modules: [{name: 'main'}]
+  // };
 
   var prodOptions = {
     almond: true,
@@ -78,7 +86,7 @@ function getRequireJSOptions(env) {
     optimize: 'uglify2'
   };
 
-  if (env === 'development') merge(options, devOptions);
+  // if (env === 'development') merge(options, devOptions); // TODO: DRY require.js paths/shims
   if (env === 'production') {
     merge(options, prodOptions);
     options.paths.requireLib = 'almond';

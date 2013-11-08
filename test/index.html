@@ -6,10 +6,9 @@
 </head>
 <body>
   <div id="mocha"></div>
-
   <script>
     var require = {
-      // baseUrl: '../test',
+      // TODO: DRY require.js paths/shims
       paths: {
         'thorax': '../bower_components/thorax/thorax',
         'handlebars': '../bower_components/handlebars/handlebars.runtime',
@@ -19,7 +18,8 @@
         'mocha': '../bower_components/mocha/mocha',
         'sinon': '../bower_components/sinon/lib/sinon',
         'sinon-chai': '../bower_components/sinon-chai/lib/sinon-chai',
-        'chai': '../bower_components/chai/chai'
+        'chai': '../bower_components/chai/chai',
+        'templates': '../tmp/templates'
       },
       shim: {
         'handlebars': {

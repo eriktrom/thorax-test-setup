@@ -29,6 +29,7 @@
  *
  * Using the conventional <%= paths.output.js %> will NOT work
  *
+ * TODO: bad docs for newbs here, make better
  */
 
 module.exports = function(grunt) {
@@ -42,6 +43,7 @@ module.exports = function(grunt) {
       'public': 'public',
       dist: 'dist',
       tmpDist: 'tmpDist',
+      // TODO: change tmpDist to tmp eventually, probably cause of templates
       distOutput: {
         js: 'dist/main.js',
       },
@@ -67,8 +69,17 @@ module.exports = function(grunt) {
   grunt.registerTask('scripts:development', [
     // 'clean:scripts',
     // 'copy:requirejs',
+
+    // TODO(CS: only doing templates makes this super fast
+    // but beware CS support is going to mess up this awesomeness
+    // the current option I have in mind is to just have a coffee/
+    // dir that outputs js and leave the super fastness. That would mean
+    // no public/js or r.js compilation(takes forever) in development at all
+
+    'clean:templates',
     'templates:tmp'
-    // 'requirejs:development'
+
+    // 'requirejs:development' // TODO: ur really slow dude, especially during tdd
   ]);
 
   grunt.registerTask('styles:development', [
@@ -81,8 +92,11 @@ module.exports = function(grunt) {
     'scripts:development',
     'styles:development',
     'thorax:inspector',
+    'karma:server',
     'connect:development',
-    'open-browser',
+    // TODO, bug, browser windows don't close themselves, every time you run grunt, new window,
+    // live reload runs in all of them, they all reload, ur system crawls to a halt.
+    'open-browser', // it's convenient :) but leaks memory, cpu cycles :(
     'watch'
   ]);
 

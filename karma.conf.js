@@ -1,6 +1,7 @@
 // Karma configuration
 // Generated on Thu Nov 07 2013 19:43:59 GMT-0800 (PST)
 
+// TODO(karma-grunt): DRY me up, move this all to grunt? what do we lose? (performance?)
 module.exports = function(config) {
   config.set({
 
@@ -9,14 +10,19 @@ module.exports = function(config) {
 
 
     // frameworks to use
-    frameworks: ['mocha', 'requirejs'],
+    frameworks: [
+      'mocha',
+      'requirejs'
+    ],
 
 
     // list of files / patterns to serve, but not include in page
+    // TODO: DRY require.js paths/shims
     files: [
       {pattern: 'js/**/*.{js,coffee}', included: false},
-      {pattern: 'test/**/*.spec.{js,coffee}', included: false},
+      {pattern: 'tmp/templates/**/*.js', included: false},
       {pattern: 'bower_components/**/*.js', included: false},
+      {pattern: 'test/**/*.spec.{js,coffee}', included: false},
       {pattern: 'test/test-setup.js', included: false},
       'test/main.karma.js'
     ],
@@ -24,13 +30,20 @@ module.exports = function(config) {
 
     // list of files to exclude
     exclude: [
+      '!js/templates/**/*.{hbs,handlebars}',
       'js/main.js'
     ],
 
 
     // test results reporter to use
     // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
-    reporters: ['progress'],
+    reporters: [
+      'progress',
+      // TODO(growl-reporter): mac only, depenency on growl,
+      //                       make generator or ditch it(it's awesome though)
+      //                       grab out of package.json too
+      'growl'
+    ],
 
 
     // web server port
@@ -47,7 +60,7 @@ module.exports = function(config) {
 
 
     // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: true,
+    autoWatch: false,
 
 
     // Start these browsers, currently available:

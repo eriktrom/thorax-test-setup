@@ -3,7 +3,9 @@ var grunt = require('grunt');
 module.exports = {
   scripts: [
     grunt.config('paths.output.js'),
-    'tmp/templates' // TODO: make paths.--
+  ],
+  templates: [
+    'tmp/templates'
   ],
   styles: [
     grunt.config('paths.output.css')

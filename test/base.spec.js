@@ -1,4 +1,4 @@
-
+// Sanity check
 describe('base', function () {
   it('should declare global libraries', function () {
     expect(Handlebars).to.be.ok;
