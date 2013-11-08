@@ -8,17 +8,14 @@ for (var file in window.__karma__.files) {
   }
 }
 
-var firstDep = ['/base/test/test-setup.js'];
-var deps = firstDep.concat(tests);
-
 require.config({
   // karma serves files from /base (relative to karma.conf.js, aka, ../base)
   // modules in this app expect paths relative to js/, we don't want ruin that
   // so in test/main.js(this file), our baseUrl should be ../base/js
-  baseUrl: '../base/js',
+  baseUrl: '/base/js',
   // load test files we grabbed above
   // start the test run, once require is done with async loading
-  deps: deps,
+  deps: ['/base/test/test-setup.js'].concat(tests),
   callback: window.__karma__.start,
   // TODO: DRY require.js paths/shims
   paths: {

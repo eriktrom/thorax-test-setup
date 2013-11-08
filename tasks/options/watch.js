@@ -21,7 +21,7 @@ module.exports = {
     tasks: ['styles:development']
   },
   // TODO(karma-grunt): setup karma completely inside of grunt
-  go: {
+  karma: {
     // any files related to tests, including templates(compiled)
     // TODO(CS): coffescript support
     files: [
