@@ -88,7 +88,7 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('default', [
-    'ensure-installed',
+    // 'ensure-installed',
     'scripts:development',
     'styles:development',
     'thorax:inspector',
