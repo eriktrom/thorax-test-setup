@@ -5,7 +5,9 @@ require({
     'handlebars': '../bower_components/handlebars/handlebars.runtime',
     'backbone': '../bower_components/backbone/backbone',
     'thorax': '../bower_components/thorax/thorax',
-    'templates': '../tmp/templates'
+    'templates': '../tmp/templates',
+    'coffee-script': '../bower_components/coffee-script/index',
+    'cs': '../bower_components/require-cs/cs'
   },
   shim: {
     'handlebars': {

@@ -2,7 +2,7 @@ define([
   'backbone',
   'collection',
   'views/root',
-  'views/todo-list/index'
+  'cs!views/todo-list/index'
 ], function(Backbone, Collection, RootView, TodoListIndexView) {
   return Backbone.Router.extend({
     routes: {
@@ -19,4 +19,4 @@ define([
       RootView.getInstance().setView(view);
     }
   });
-}); 
+});
