@@ -100,6 +100,12 @@ module.exports = function(grunt) {
     'watch'
   ]);
 
+  grunt.registerTask('test', [
+    'clean:templates',
+    'templates:tmp',
+    'karma:ci'
+  ])
+
   grunt.registerTask('production', [
     'clean:production',
     'styles:development',
