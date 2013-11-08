@@ -96,7 +96,7 @@ module.exports = function(grunt) {
     'connect:development',
     // TODO, bug, browser windows don't close themselves, every time you run grunt, new window,
     // live reload runs in all of them, they all reload, ur system crawls to a halt.
-    'open-browser', // it's convenient :) but leaks memory, cpu cycles :(
+    'open-browser:dev', // it's convenient :) but leaks memory, cpu cycles :(
     'watch'
   ]);
 
@@ -107,7 +107,7 @@ module.exports = function(grunt) {
     'templates:tmpDist',
     'copy:tmpDist',
     'requirejs:production',
-    'open-browser',
+    'open-browser:dist',
     'connect:production'
   ]);
 
