@@ -1,12 +1,48 @@
-<!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
   <title>Mocha Tests</title>
   <link rel="stylesheet" href="../bower_components/mocha/mocha.css" />
-  <script data-main="main.js" src="../bower_components/requirejs/require.js"></script>
 </head>
 <body>
   <div id="mocha"></div>
 
+  <script>
+    var require = {
+      paths: {
+        'thorax': '../bower_components/thorax/thorax',
+        'handlebars': '../bower_components/handlebars/handlebars.runtime',
+        'jquery': '../bower_components/jquery/jquery',
+        'underscore': '../bower_components/underscore/underscore',
+        'backbone': '../bower_components/backbone/backbone',
+        'mocha': '../bower_components/mocha/mocha',
+        'sinon': '../bower_components/sinon/lib/sinon',
+        'sinon-chai': '../bower_components/sinon-chai/lib/sinon-chai',
+        'chai': '../bower_components/chai/chai'
+      },
+      shim: {
+        'handlebars': {
+          exports: 'Handlebars'
+        },
+        'backbone': {
+          exports: 'Backbone',
+          deps: ['jquery', 'underscore']
+        },
+        'underscore': {
+          exports: '_'
+        },
+        'thorax': {
+          exports: 'Thorax',
+          deps: ['handlebars', 'backbone']
+        },
+      },
+      deps: [
+        'mocha',
+        'chai'
+      ]
+    }
+  </script>
+
+  <script data-main="main" src="../bower_components/requirejs/require.js"></script>
 </body>
 </html>

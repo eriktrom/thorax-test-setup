@@ -38,9 +38,10 @@ require.config({
     'thorax': {
       exports: 'Thorax',
       deps: ['handlebars', 'backbone']
-    },
-    'bootstrap': { // TODO: bootstrap if/then
-      deps: ['jquery']
     }
+  },
+  callback: function() {
+    window.mocha.setup('bdd');
+    window.mocha.checkLeaks();
   }
 });
