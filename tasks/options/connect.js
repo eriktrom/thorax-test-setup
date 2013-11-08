@@ -4,7 +4,7 @@ module.exports = {
   development: {
     options: {
       hostname: grunt.config('settings.hostname'),
-      base: grunt.config('paths.public'),
+      // base: grunt.config('paths.public'),
       port: grunt.config('settings.port'),
       middleware: function (connect, options) {
         return [

@@ -1,6 +1,31 @@
-require([
+require({
+  paths: {
+    'jquery': '../bower_components/jquery/jquery',
+    'underscore': '../bower_components/underscore/underscore',
+    'handlebars': '../bower_components/handlebars/handlebars.runtime',
+    'backbone': '../bower_components/backbone/backbone',
+    'thorax': '../bower_components/thorax/thorax',
+    'templates': '../tmp/templates'
+  },
+  shim: {
+    'handlebars': {
+      exports: 'Handlebars'
+    },
+    'backbone': {
+      exports: 'Backbone',
+      deps: ['jquery', 'underscore']
+    },
+    'underscore': {
+      exports: '_'
+    },
+    'thorax': {
+      exports: 'Thorax',
+      deps: ['handlebars', 'backbone']
+    }
+  }
+}, [
   'jquery',
-  
+
   'backbone',
   'views/root',
   'routers/todo-list',

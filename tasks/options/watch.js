@@ -3,7 +3,11 @@ var grunt = require('grunt');
 module.exports = {
   options: {
     livereload: grunt.config('settings.liveReloadPort'),
-    files: ['public/**/*']
+    files: [
+      'public/**/*',
+      grunt.config('paths.js') + '/**/*.{js,coffee}',
+      'tmp/templates/**/*.js' // make paths.--
+    ],
   },
   handlebars: {
     files: [grunt.config('paths.templates') + '/**/*.{hbs,handlebars}'],

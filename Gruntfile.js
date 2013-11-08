@@ -65,10 +65,10 @@ module.exports = function(grunt) {
   grunt.loadTasks('tasks');
 
   grunt.registerTask('scripts:development', [
-    'clean:scripts',
-    'copy:requirejs',
-    'templates:public/js',
-    'requirejs:development'
+    // 'clean:scripts',
+    // 'copy:requirejs',
+    'templates:tmp'
+    // 'requirejs:development'
   ]);
 
   grunt.registerTask('styles:development', [
