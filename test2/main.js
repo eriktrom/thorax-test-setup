@@ -1,19 +1,34 @@
+define(function(require) {
+  // mocha and friends
+  require('mocha');
+  global.mocha.checkLeaks();
+  global.mocha.setup('bdd');
 
-window.mocha.setup('bdd');
-window.mocha.checkLeaks();
-window.mocha.globals([
-  'chai',
-  'expect',
-  'Handlebars'
-]);
+  global.sinon = require("sinon");
+  global.chai = require("chai");
+  global.should = require("chai").should();
+  global.expect = require("chai").expect;
+  global.AssertionError = require("chai").AssertionError;
 
-define(function(require, exports, module) {
-  global.expect = require('chai').expect;
+  // https://github.com/domenic/sinon-chai/blob/master/test/throwing.coffee
+  global.swallow = function (thrower) {
+    try {
+      thrower();
+    } catch (e) { }
+  };
+
+  var sinonChai = require("sinon-chai");
+  chai.use(sinonChai);
+
+  // unique to thorax apps
   global.Handlebars = require('handlebars');
   global.Backbone = require('backbone');
+  global.Thorax = require('thorax');
 
-  require('./base.spec');
-
-  global.mocha.run();
-
+  // require test files, then run mocha when they're async loaded
+  require([
+    './base.spec'
+  ], function() { // run mocha
+    global.mocha.run();
+  });
 });
