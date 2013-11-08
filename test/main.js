@@ -7,7 +7,8 @@ define(function(require) {
 
   // manually require test files when not using karma(TODO: fix this)
   require([
-    './base.spec'
+    './base.spec',
+    './app.spec',
   ], function() { // run mocha
     global.mocha.run();
   });
