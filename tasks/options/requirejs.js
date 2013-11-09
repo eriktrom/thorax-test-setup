@@ -19,6 +19,7 @@
 // The short of it is this isn't needed and is slow, only use for production
 // The long of it is coffeescript support needs to be handled and the duplication
 // of paths and shims needs to be handled.
+// EDIT: coffeescript support could be compile on load
 
 var grunt = require('grunt');
 
@@ -65,7 +66,7 @@ function getRequireJSOptions(env) {
     }
   };
 
-  // I should have never been born
+  // TODO: I should have never been born
   // var devOptions = {
   //   appDir: grunt.config('paths.js'),
   //   baseUrl: './',

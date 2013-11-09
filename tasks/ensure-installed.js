@@ -1,3 +1,6 @@
+// TODO: throws a an error, tmp package not found? New error, this is
+// old code that was put here long ago
+
 // var fs    = require('fs'),
 //     path  = require('path'),
 //     bower = require('bower');

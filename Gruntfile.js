@@ -43,7 +43,7 @@ module.exports = function(grunt) {
       'public': 'public',
       dist: 'dist',
       tmpDist: 'tmpDist',
-      // TODO: change tmpDist to tmp eventually, probably cause of templates
+      // TODO: change tmpDist to tmp eventually, tmp/js, tmp/templates
       distOutput: {
         js: 'dist/main.js',
       },
@@ -75,6 +75,7 @@ module.exports = function(grunt) {
     // the current option I have in mind is to just have a coffee/
     // dir that outputs js and leave the super fastness. That would mean
     // no public/js or r.js compilation(takes forever) in development at all
+    // EDIT: consider compile on load for dev, fixes complexity problem
 
     'clean:templates',
     'templates:tmp'
@@ -100,19 +101,6 @@ module.exports = function(grunt) {
     'watch'
   ]);
 
-  grunt.registerTask('test', [
-    'clean:templates',
-    'templates:tmp',
-    'karma:ci'
-  ]);
-
-  grunt.registerTask('phtest', [
-    'clean:templates',
-    'templates:tmp',
-    'connect:CIServer',
-    'mocha_phantomjs'
-  ]);
-
   grunt.registerTask('production', [
     'clean:production',
     'styles:development',
@@ -122,6 +110,26 @@ module.exports = function(grunt) {
     'requirejs:production',
     'open-browser:dist',
     'connect:production'
+  ]);
+
+  // TODO: clean up test tasks when scripts:development -> templates
+  grunt.registerTask('test', [
+    'clean:templates',
+    'templates:tmp',
+    'karma:ci'
+  ]);
+
+  grunt.registerTask('testDeploy', [
+    'clean:templates',
+    'templates:tmp',
+    'karma:preDeploy'
+  ]);
+
+  grunt.registerTask('phtest', [
+    'clean:templates',
+    'templates:tmp',
+    'connect:CIServer',
+    'mocha_phantomjs'
   ]);
 
   require('load-grunt-config')(grunt, {

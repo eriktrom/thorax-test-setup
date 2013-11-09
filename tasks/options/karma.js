@@ -1,6 +1,5 @@
 module.exports = {
-  // we could setup karma completely inside grunt
-  // but let's check the speed first, changing later is easy
+  // TODO: setup karma completely within grunt
   options: {
     configFile: 'karma.conf.js'
   },
@@ -9,7 +8,11 @@ module.exports = {
   },
   ci: {
     singleRun: true,
-    browsers: ['Chrome']
+    browsers: ['PhantomJS']
+  },
+  preDeploy: {
+    singleRun: true,
+    browsers: ['PhantomJS', 'Chrome', 'Firefox', 'Safari']
   }
-  // TODO: we could have one for integration testing as well
+  // TODO: integration testing
 };

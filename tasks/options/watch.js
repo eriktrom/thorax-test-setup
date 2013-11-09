@@ -10,6 +10,7 @@ module.exports = {
     files: [grunt.config('paths.templates') + '/**/*.{hbs,handlebars}'],
     tasks: ['scripts:development']
   },
+  // TODO: compile on load instead for dev?
   // scripts: {
   //   files: [
   //     grunt.config('paths.js') + '/**/*.{js,coffee}'
@@ -23,7 +24,6 @@ module.exports = {
   // TODO(karma-grunt): setup karma completely inside of grunt
   karma: {
     // any files related to tests, including templates(compiled)
-    // TODO(CS): coffescript support
     files: [
       grunt.config('paths.js') + '/**/*.{js,coffee}',
       '!' + grunt.config('paths.js') + '!js/templates/**/*.{js,coffee}',
