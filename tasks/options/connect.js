@@ -4,7 +4,7 @@ module.exports = {
   development: {
     options: {
       hostname: grunt.config('settings.hostname'),
-      // base: grunt.config('paths.public'), // TODO: only serve public/ & tests/
+      // base: grunt.config('paths.public'),
       port: grunt.config('settings.port'),
       middleware: function (connect, options) {
         return [
@@ -21,6 +21,13 @@ module.exports = {
       base: grunt.config('paths.dist'),
       port: grunt.config('settings.port'),
       keepalive: true
+    }
+  },
+  CIServer: {
+    options: {
+      base: '.',
+      port: 8001, // TODO: CIServer port
+      // keepalive: true
     }
   }
 };

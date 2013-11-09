@@ -104,7 +104,14 @@ module.exports = function(grunt) {
     'clean:templates',
     'templates:tmp',
     'karma:ci'
-  ])
+  ]);
+
+  grunt.registerTask('phtest', [
+    'clean:templates',
+    'templates:tmp',
+    'connect:CIServer',
+    'mocha_phantomjs'
+  ]);
 
   grunt.registerTask('production', [
     'clean:production',
