@@ -22,7 +22,7 @@ require.config({
   // TODO: DRY require.js paths/shims
   paths: {
     'thorax': '/base/bower_components/thorax/thorax',
-    'handlebars': '/base/bower_components/handlebars/handlebars.runtime',
+    'handlebars': '/base/bower_components/handlebars/handlebars', // use regular so .compile works
     'jquery': '/base/bower_components/jquery/jquery',
     'underscore': '/base/bower_components/underscore/underscore',
     'backbone': '/base/bower_components/backbone/backbone',

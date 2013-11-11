@@ -19,4 +19,7 @@ define(function(require) {
   global.Handlebars = require('handlebars');
   global.Backbone = require('backbone');
   global.Thorax = require('thorax');
+
+  // require handlebars helpers
+  require('helpers');
 });
