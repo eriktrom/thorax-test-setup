@@ -10,6 +10,9 @@ define(function(require) {
   // there's likely a way to find what files connect can serve
   require([ // require test files
     './base.spec',
+    './helpers/helpers.spec',
+    './helpers/view-helpers.spec',
+    './integration/todo-list.spec',
     './app.spec',
     'cs!./app-cs.spec'
   ], function() { // run mocha

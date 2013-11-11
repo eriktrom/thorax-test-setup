@@ -29,7 +29,9 @@ require.config({
     'sinon': '/base/bower_components/sinon/lib/sinon',
     'sinon-chai': '/base/bower_components/sinon-chai/lib/sinon-chai',
     'chai': '/base/bower_components/chai/chai',
-    'templates': '/base/tmp/templates'
+    'templates': '/base/tmp/templates',
+    'coffee-script': '/bower_components/coffee-script/index',
+    'cs': '/bower_components/require-cs/cs'
   },
   shim: {
     'handlebars': {
