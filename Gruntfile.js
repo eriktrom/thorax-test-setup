@@ -89,7 +89,7 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('default', [
-    // 'ensure-installed',
+    'ensure-installed',
     'scripts:development',
     'styles:development',
     'thorax:inspector',
@@ -102,6 +102,7 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('production', [
+    'ensure-installed',
     'clean:production',
     'styles:development',
     'cssmin',
@@ -114,18 +115,21 @@ module.exports = function(grunt) {
 
   // TODO: clean up test tasks when scripts:development -> templates
   grunt.registerTask('test', [
+    'ensure-installed',
     'clean:templates',
     'templates:tmp',
     'karma:ci'
   ]);
 
   grunt.registerTask('testDeploy', [
+    'ensure-installed',
     'clean:templates',
     'templates:tmp',
     'karma:preDeploy'
   ]);
 
   grunt.registerTask('phtest', [
+    'ensure-installed',
     'clean:templates',
     'templates:tmp',
     'connect:CIServer',
