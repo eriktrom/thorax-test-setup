@@ -23,6 +23,7 @@ module.exports = function(config) {
       {pattern: 'tmp/templates/**/*.js', included: false},
       {pattern: 'bower_components/**/*.js', included: false},
       {pattern: 'test/**/*.spec.{js,coffee}', included: false},
+      {pattern: 'test/fixtures/**/*.{html,hbs,handlebars}', included: false},
       {pattern: 'test/test-setup.js', included: false},
       'test/main.karma.js'
     ],
@@ -31,7 +32,8 @@ module.exports = function(config) {
     // list of files to exclude
     exclude: [
       '!js/templates/**/*.{hbs,handlebars}',
-      'js/main.js'
+      'js/main.js',
+      'test/main.js'
     ],
 
 

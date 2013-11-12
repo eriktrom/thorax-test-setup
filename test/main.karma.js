@@ -31,7 +31,8 @@ require.config({
     'chai': '/base/bower_components/chai/chai',
     'templates': '/base/tmp/templates',
     'coffee-script': '/bower_components/coffee-script/index',
-    'cs': '/bower_components/require-cs/cs'
+    'cs': '/bower_components/require-cs/cs',
+    'fixtures': '../bower_components/fixtures/fixtures'
   },
   shim: {
     'handlebars': {

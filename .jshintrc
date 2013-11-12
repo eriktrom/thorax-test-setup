@@ -14,7 +14,13 @@
     "Handlebars",
     "Backbone",
     "Thorax",
-    "chai"
+    "chai",
+    "fixtures",
+    "afterEach",
+    "assert",
+    "sinon",
+    "hbsFixture",
+    "AssertionError"
   ],
     "node": true,
     "es5": false,
