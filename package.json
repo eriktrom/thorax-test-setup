@@ -29,7 +29,8 @@
     "grunt-karma": "~0.6.2",
     "mocha-phantomjs": "~3.1.6",
     "phantomjs": "~1.9.2-2",
-    "grunt-mocha-phantomjs": "~0.3.1"
+    "grunt-mocha-phantomjs": "~0.3.1",
+    "grunt-contrib-jshint": "~0.7.1"
   },
   "scripts": {
     "start": "node ./server.js",

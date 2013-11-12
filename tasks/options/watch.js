@@ -22,7 +22,7 @@ module.exports = {
     tasks: ['styles:development']
   },
   // TODO(karma-grunt): setup karma completely inside of grunt
-  karma: {
+  scripts: {
     // any files related to tests, including templates(compiled)
     files: [
       grunt.config('paths.js') + '/**/*.{js,coffee}',
@@ -30,7 +30,7 @@ module.exports = {
       'tmp/templates/**/*.js', // make paths.--
       'test/**/*'
     ],
-    tasks: ['karma:server:run']
+    tasks: ['jshint:all', 'karma:server:run']
   },
   other: {
     // like images, fonts

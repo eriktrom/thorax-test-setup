@@ -89,6 +89,7 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('default', [
+    'jshint:all',
     'ensure-installed',
     'scripts:development',
     'styles:development',
@@ -102,6 +103,7 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('production', [
+    'jshint:all',
     'ensure-installed',
     'clean:production',
     'styles:development',
@@ -115,6 +117,7 @@ module.exports = function(grunt) {
 
   // TODO: clean up test tasks when scripts:development -> templates
   grunt.registerTask('test', [
+    'jshint:all',
     'ensure-installed',
     'clean:templates',
     'templates:tmp',
@@ -122,6 +125,7 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('testDeploy', [
+    'jshint:all',
     'ensure-installed',
     'clean:templates',
     'templates:tmp',
@@ -129,6 +133,7 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('phtest', [
+    'jshint:all',
     'ensure-installed',
     'clean:templates',
     'templates:tmp',
