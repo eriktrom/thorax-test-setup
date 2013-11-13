@@ -12,7 +12,7 @@ define(function(require) {
     './routers/example.spec',
     // views
     './views/root.spec',
-    // 'cs!./views/root-coffee.spec', // coffeescript works
+    'cs!./views/root-coffee.spec', // coffeescript works
     // models
     './models/example.spec',
     // collections
