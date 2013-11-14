@@ -12,45 +12,9 @@
   <div id="goToApp"><a href="/public/" target="_blank">browse app in a new tab</a></div>
   <div id="mocha"></div>
   <script>
-    var require = {
-      // TODO: DRY require.js paths/shims
-      baseUrl: '../js',
-      paths: {
-        'thorax': '../bower_components/thorax/thorax',
-        'handlebars': '../bower_components/handlebars/handlebars', // so full version so .compile works
-        'jquery': '../bower_components/jquery/jquery',
-        'underscore': '../bower_components/underscore/underscore',
-        'backbone': '../bower_components/backbone/backbone',
-        'coffee-script': '../bower_components/coffee-script/index',
-        'cs': '../bower_components/require-cs/cs',
-        // tests only
-        'mocha': '../bower_components/mocha/mocha',
-        'sinon': '../bower_components/sinon/lib/sinon',
-        'sinon-chai': '../bower_components/sinon-chai/lib/sinon-chai',
-        'chai': '../bower_components/chai/chai',
-        'templates': '../tmp/templates',
-        'fixtures': '../bower_components/fixtures/fixtures'
-      },
-      shim: {
-        'handlebars': {
-          exports: 'Handlebars'
-        },
-        'backbone': {
-          exports: 'Backbone',
-          deps: ['jquery', 'underscore']
-        },
-        'underscore': {
-          exports: '_'
-        },
-        'thorax': {
-          exports: 'Thorax',
-          deps: ['handlebars', 'backbone']
-        },
-      },
-      urlArgs: "bust=" +  (new Date()).getTime()
-    }
+
   </script>
 
-  <script data-main="../test/main" src="../bower_components/requirejs/require.js"></script>
+  <script data-main="main" src="../bower_components/requirejs/require.js"></script>
 </body>
 </html>

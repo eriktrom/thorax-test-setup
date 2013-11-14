@@ -25,15 +25,14 @@ module.exports = function(config) {
       {pattern: 'test/**/*.spec.{js,coffee}', included: false},
       {pattern: 'test/fixtures/**/*.{html,hbs,handlebars}', included: false},
       {pattern: 'test/test-setup.js', included: false},
-      'test/main.karma.js'
+      'test/main.js'
     ],
 
 
     // list of files to exclude
     exclude: [
       '!js/templates/**/*.{hbs,handlebars}',
-      'js/main.js',
-      'test/main.js'
+      'js/main.js'
     ],
 
 
