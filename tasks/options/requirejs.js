@@ -24,79 +24,87 @@
 var grunt = require('grunt');
 
 module.exports = {
-  // development: getRequireJSOptions('development'),
-  production: getRequireJSOptions('production')
-};
-
-function merge(original, updates) {
-  for (var prop in updates) {
-    original[prop] = updates[prop];
-  }
-}
-
-function getRequireJSOptions(env) {
-  var options = {
-    // TODO: DRY require.js paths/shims
-    paths: {
-      'jquery': '../bower_components/jquery/jquery',
-      'underscore': '../bower_components/underscore/underscore',
-      'handlebars': '../bower_components/handlebars/handlebars.runtime',
-      'backbone': '../bower_components/backbone/backbone',
-      'thorax': '../bower_components/thorax/thorax',
-      'bootstrap': '../bower_components/bootstrap/js/bootstrap',
-      'coffee-script': '../bower_components/coffee-script/index',
-      'cs': '../bower_components/require-cs/cs'
-    },
-    shim: {
-      'handlebars': {
-        exports: 'Handlebars'
-      },
-      'backbone': {
-        exports: 'Backbone',
-        deps: ['jquery', 'underscore']
-      },
-      'underscore': {
-        exports: '_'
-      },
-      'thorax': {
-        exports: 'Thorax',
-        deps: ['handlebars', 'backbone']
-      },
-      'bootstrap': { // TODO: generator is outputting bootstrap when option is not chosen(likely to leave b/c only going to be used for less anyway?)
-        deps: ['jquery']
+  production: {
+    baseUrl: grunt.config('paths.tmp'),
+    mainConfigFile: grunt.config('paths.tmp') + '/build.js',
+    include: ['main'],
+    modules: [
+      {
+        name: 'main'
       }
-    }
-  };
-
-  // TODO: I should have never been born
-  // var devOptions = {
-  //   appDir: grunt.config('paths.js'),
-  //   baseUrl: './',
-  //   dir: grunt.config('paths.output.js'),
-  //   keepBuildDir: true,
-  //   optimize: 'none',
-  //   modules: [{name: 'main'}]
-  // };
-
-  var prodOptions = {
+    ],
     almond: true,
     name: 'requireLib',
-    include: ['main'],
-    baseUrl: grunt.config('paths.tmp'),
+    requireLib: 'almond',
     out: grunt.config('paths.distOutput.js'),
     removeCombined: true,
     findNestedDependencies: true,
     optimize: 'uglify2'
-  };
-
-  // if (env === 'development') merge(options, devOptions); // TODO: DRY require.js paths/shims
-  if (env === 'production') {
-    merge(options, prodOptions);
-    options.paths.requireLib = 'almond';
   }
+};
 
-  return {
-    options: options
-  };
-}
+// function merge(original, updates) {
+//   for (var prop in updates) {
+//     original[prop] = updates[prop];
+//   }
+// }
+
+// function getRequireJSOptions(env) {
+//   var options = {
+//     // TODO: DRY require.js paths/shims
+//     paths: {
+//       'jquery': '../bower_components/jquery/jquery',
+//       'underscore': '../bower_components/underscore/underscore',
+//       'handlebars': '../bower_components/handlebars/handlebars.runtime',
+//       'backbone': '../bower_components/backbone/backbone',
+//       'thorax': '../bower_components/thorax/thorax',
+//       'bootstrap': '../bower_components/bootstrap/js/bootstrap',
+//       'coffee-script': '../bower_components/coffee-script/index',
+//       'cs': '../bower_components/require-cs/cs'
+//     },
+//     shim: {
+//       'handlebars': {
+//         exports: 'Handlebars'
+//       },
+//       'backbone': {
+//         exports: 'Backbone',
+//         deps: ['jquery', 'underscore']
+//       },
+//       'underscore': {
+//         exports: '_'
+//       },
+//       'thorax': {
+//         exports: 'Thorax',
+//         deps: ['handlebars', 'backbone']
+//       },
+//       'bootstrap': { // TODO: generator is outputting bootstrap when option is not chosen(likely to leave b/c only going to be used for less anyway?)
+//         deps: ['jquery']
+//       }
+//     }
+//   };
+
+//   // TODO: I should have never been born
+//   // var devOptions = {
+//   //   appDir: grunt.config('paths.js'),
+//   //   baseUrl: './',
+//   //   dir: grunt.config('paths.output.js'),
+//   //   keepBuildDir: true,
+//   //   optimize: 'none',
+//   //   modules: [{name: 'main'}]
+//   // };
+
+//   var prodOptions = {
+
+//   };
+
+//   // if (env === 'development') merge(options, devOptions); // TODO: DRY require.js paths/shims
+//   if (env === 'production') {
+//     merge(options, prodOptions);
+//     options.paths.requireLib = 'almond';
+//   }
+
+//   return {
+//     options: options
+//   };
+// }
 

@@ -19,10 +19,16 @@ module.exports = {
         src: ['**', '!templates/**'],
         dest: grunt.config('paths.tmp')
       },
-      { // copy almond to tmp/ before compiling
-        src: 'bower_components/almond/almond.js',
-        dest: grunt.config('paths.tmp') + '/almond.js'
-      }
+      // { // copy almond to tmp/ before compiling
+      //   src: 'bower_components/almond/almond.js',
+      //   dest: grunt.config('paths.tmp') + '/almond.js'
+      // },
+      // {
+      //   // copy /main.js to tmp/build.js to ensure
+      //   // same configuration used during dev/testing
+      //   src: 'main.js',
+      //   dest: grunt.config('paths.tmp') + '/build.js'
+      // }
     ]
   },
   styles: {
