@@ -1,10 +1,17 @@
+/**
+ * This file is only run in the browser and mocha_phantomjs
+ *
+ * It sets up mocha and manually requires files for tests
+ *
+ */
+
+
 define(function(require) {
+
   require('mocha');
   global.mocha.checkLeaks();
   global.mocha.setup('bdd');
   global.mocha.reporter('html');
-
-  require('./test-setup.js');
 
   require([ // require test files
     './app.spec',

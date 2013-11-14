@@ -2,19 +2,25 @@ function isKarma() {
   return typeof window.__karma__ !== "undefined";
 }
 
-var baseUrl, pathPrefix;
+var pathPrefix;
 if (isKarma()) {
-  baseUrl = '/base/js'; // path to js/main.js from root of karma server, hosted from /base
-  pathPrefix = '/base/'; // prepend /base to all paths used below for karma server root
+  pathPrefix = '/base/';
 } else {
-  baseUrl = '../js'; // path to js/main.js, from this file
-  pathPrefix = '../'; // prepend ../ to all paths used below, for non karma use
+  pathPrefix = '../';
 }
 
 function configDeps() {
-  // no auto dep loading for non karma server(yet)
-  if (!isKarma()) { return ['../test/main.browser']; }
+  // include this module with all test runners,
+  // e.g., browser, mocha_phantomjs, karma
+  var testSetupAll = [pathPrefix + 'test/test-setup-all.js'];
 
+  // not running karma? return an array with test-setup-all plus
+  // include test-setup-browser for browser/mocha_phantomjs test runners only
+  if (!isKarma()) {
+    return testSetupAll.concat([pathPrefix + 'test/test-setup-browser']);
+  }
+
+  // still here?, means we're using karma
   // grab all the test files karma is serving in karma.conf.js
   var tests = [];
   for (var file in window.__karma__.files) {
@@ -25,8 +31,9 @@ function configDeps() {
     }
   }
 
-  // deps are set to all files served by karma that contain .spec + test_setup.js
-  return [pathPrefix + 'test/test-setup.js'].concat(tests);
+  // include test-setup-all
+  // plus all files served by karma that contain .spec in their name
+  return testSetupAll.concat(tests);
 }
 
 function configCallback() {
@@ -40,19 +47,10 @@ function configUrlArgs() {
 }
 
 require.config({
-  baseUrl: baseUrl,
+  baseUrl: pathPrefix + 'js',
   deps: configDeps(),
   callback: configCallback(),
   paths: {
-    // 'jquery': pathPrefix + 'bower_components/jquery/jquery',
-    // 'underscore': pathPrefix + 'bower_components/underscore/underscore',
-    // 'handlebars': pathPrefix + 'bower_components/handlebars/handlebars.runtime', // test/main.js will override with .runtime version
-    // 'backbone': pathPrefix + 'bower_components/backbone/backbone',
-    // 'thorax': pathPrefix + 'bower_components/thorax/thorax',
-    // 'templates': pathPrefix + 'tmp/templates',
-    // 'coffee-script': pathPrefix + 'bower_components/coffee-script/index',
-    // 'cs': pathPrefix + 'bower_components/require-cs/cs',
-    // tests only
     'handlebars': pathPrefix + 'bower_components/handlebars/handlebars', // use regular so .compile works
     'mocha': pathPrefix + 'bower_components/mocha/mocha', // only used for browser/mocha_phantomjs
     'sinon': pathPrefix + 'bower_components/sinon/lib/sinon',

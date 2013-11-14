@@ -1,3 +1,13 @@
+/**
+ * This file is loaded before all other files by all test runners, including
+ * karma. If you need to specify something require an AMD library/module, this
+ * is the place to do it.
+ *
+ * Keep in mind karma has a different base path the browser based runner,
+ * see test/main.karma.js for more information.
+ *
+ */
+
 define(function(require) {
   global.chai = require("chai");
   // global.should = require("chai").should(); // TODO: errors in phantom
