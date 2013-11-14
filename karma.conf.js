@@ -24,15 +24,16 @@ module.exports = function(config) {
       {pattern: 'bower_components/**/*.js', included: false},
       {pattern: 'test/**/*.spec.{js,coffee}', included: false},
       {pattern: 'test/fixtures/**/*.{html,hbs,handlebars}', included: false},
+      {pattern: 'test/main.js', included: false},
       {pattern: 'test/test-setup.js', included: false},
-      'test/main.js'
+      'main.js'
     ],
 
 
     // list of files to exclude
     exclude: [
       '!js/templates/**/*.{hbs,handlebars}',
-      'js/main.js'
+      // 'js/main.js'
     ],
 
 

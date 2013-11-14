@@ -44,6 +44,14 @@ require.config({
   deps: configDeps(),
   callback: configCallback(),
   paths: {
+    // 'jquery': pathPrefix + 'bower_components/jquery/jquery',
+    // 'underscore': pathPrefix + 'bower_components/underscore/underscore',
+    // 'handlebars': pathPrefix + 'bower_components/handlebars/handlebars.runtime', // test/main.js will override with .runtime version
+    // 'backbone': pathPrefix + 'bower_components/backbone/backbone',
+    // 'thorax': pathPrefix + 'bower_components/thorax/thorax',
+    // 'templates': pathPrefix + 'tmp/templates',
+    // 'coffee-script': pathPrefix + 'bower_components/coffee-script/index',
+    // 'cs': pathPrefix + 'bower_components/require-cs/cs',
     // tests only
     'handlebars': pathPrefix + 'bower_components/handlebars/handlebars', // use regular so .compile works
     'mocha': pathPrefix + 'bower_components/mocha/mocha', // only used for browser/mocha_phantomjs

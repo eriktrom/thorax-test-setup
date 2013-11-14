@@ -1,17 +1,17 @@
-function isKarma() {
-  return typeof window.__karma__ !== "undefined";
-}
-
 var baseUrl, pathPrefix;
-if (isKarma()) {
-  baseUrl = '/base/js'; // path to js/main.js from root of karma server, hosted from /base
+if (window.__karma__) {
+  baseUrl = '/base/test'; // path to js/main.js from root of karma server, hosted from /base
   pathPrefix = '/base/'; // prepend /base to all paths used below for karma server root
-} else {
-  baseUrl = '../js'; // path to js/main.js, from this file
+} else if (window.__isTest__) {
+  baseUrl = '../test'; // path to js/main.js, from this file
   pathPrefix = '../'; // prepend ../ to all paths used below, for non karma use
+} else {
+  baseUrl = '../js';
+  pathPrefix = '../';
 }
 
 require.config({
+  baseUrl: baseUrl,
   deps: ['main'],
   paths: {
     'jquery': pathPrefix + 'bower_components/jquery/jquery',
