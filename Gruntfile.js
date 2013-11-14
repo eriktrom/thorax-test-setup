@@ -37,6 +37,7 @@ module.exports = function(grunt) {
   var settings = {
     liveReloadPort: 35729 || process.env.LRPort,
     port: process.env.PORT || 8000,
+    mochaPhantomPort: process.env.MOCHA_PHANTOM_PORT || 8001,
     hostname: 'localhost',
     templates: {},
     paths: {
@@ -89,9 +90,7 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('default', [
-    'jshint:all',
-    'ensure-installed',
-    'scripts:development',
+    'build',
     'styles:development',
     'thorax:inspector',
     'karma:server',
@@ -117,28 +116,25 @@ module.exports = function(grunt) {
 
   // TODO: clean up test tasks when scripts:development -> templates
   grunt.registerTask('test', [
-    'jshint:all',
-    'ensure-installed',
-    'clean:templates',
-    'templates:tmp',
+    'build',
     'karma:ci'
   ]);
 
   grunt.registerTask('testDeploy', [
-    'jshint:all',
-    'ensure-installed',
-    'clean:templates',
-    'templates:tmp',
+    'build',
     'karma:preDeploy'
   ]);
 
   grunt.registerTask('phtest', [
-    'jshint:all',
-    'ensure-installed',
-    'clean:templates',
-    'templates:tmp',
+    'build',
     'connect:CIServer',
     'mocha_phantomjs'
+  ]);
+
+  grunt.registerTask('build', [
+    'ensure-installed',
+    'jshint:all',
+    'templates:tmp'
   ]);
 
   require('load-grunt-config')(grunt, {

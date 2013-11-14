@@ -2,6 +2,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('templates', function(outputDir) {
     templatesList(outputDir);
+    grunt.task.run('clean:templates');
     grunt.task.run('handlebars:templates');
   });
 
