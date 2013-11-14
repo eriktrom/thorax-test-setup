@@ -28,7 +28,8 @@ module.exports = {
       grunt.config('paths.js') + '/**/*.{js,coffee}',
       '!' + grunt.config('paths.js') + '!js/templates/**/*.{js,coffee}',
       'tmp/templates/**/*.js', // make paths.--
-      'test/**/*'
+      'test/**/*',
+      'main.js'
     ],
     tasks: ['jshint:all', 'karma:server:run']
   },

@@ -2,8 +2,6 @@ function isKarma() {
   return typeof window.__karma__ !== "undefined";
 }
 
-function notKarma() { return !isKarma(); }
-
 var baseUrl, pathPrefix;
 if (isKarma()) {
   baseUrl = '/base/js'; // path to js/main.js from root of karma server, hosted from /base
@@ -15,7 +13,7 @@ if (isKarma()) {
 
 function configDeps() {
   // no auto dep loading for non karma server(yet)
-  if (notKarma()) { return ['../test/main.browser']; }
+  if (!isKarma()) { return ['../test/main.browser']; }
 
   // grab all the test files karma is serving in karma.conf.js
   var tests = [];
@@ -46,19 +44,12 @@ require.config({
   deps: configDeps(),
   callback: configCallback(),
   paths: {
-    'thorax': pathPrefix + 'bower_components/thorax/thorax',
-    'handlebars': pathPrefix + 'bower_components/handlebars/handlebars', // use regular so .compile works
-    'jquery': pathPrefix + 'bower_components/jquery/jquery',
-    'underscore': pathPrefix + 'bower_components/underscore/underscore',
-    'backbone': pathPrefix + 'bower_components/backbone/backbone',
-    'coffee-script': pathPrefix + 'bower_components/coffee-script/index',
-    'cs': pathPrefix + 'bower_components/require-cs/cs',
     // tests only
+    'handlebars': pathPrefix + 'bower_components/handlebars/handlebars', // use regular so .compile works
     'mocha': pathPrefix + 'bower_components/mocha/mocha', // only used for browser/mocha_phantomjs
     'sinon': pathPrefix + 'bower_components/sinon/lib/sinon',
     'sinon-chai': pathPrefix + 'bower_components/sinon-chai/lib/sinon-chai',
     'chai': pathPrefix + 'bower_components/chai/chai',
-    'templates': pathPrefix + 'tmp/templates',
     'fixtures': pathPrefix + 'bower_components/fixtures/fixtures'
   },
   shim: {
