@@ -26,13 +26,15 @@ require.config({
     'jquery': '/base/bower_components/jquery/jquery',
     'underscore': '/base/bower_components/underscore/underscore',
     'backbone': '/base/bower_components/backbone/backbone',
+    'coffee-script': '/base/bower_components/coffee-script/index',
+    'cs': '/base/bower_components/require-cs/cs',
+    // tests only
+    'mocha': '/base/bower_components/mocha/mocha',
     'sinon': '/base/bower_components/sinon/lib/sinon',
     'sinon-chai': '/base/bower_components/sinon-chai/lib/sinon-chai',
     'chai': '/base/bower_components/chai/chai',
     'templates': '/base/tmp/templates',
-    'coffee-script': '/bower_components/coffee-script/index',
-    'cs': '/bower_components/require-cs/cs',
-    'fixtures': '../bower_components/fixtures/fixtures'
+    'fixtures': '/base/bower_components/fixtures/fixtures'
   },
   shim: {
     'handlebars': {

@@ -43,7 +43,9 @@ function getRequireJSOptions(env) {
       'handlebars': '../bower_components/handlebars/handlebars.runtime',
       'backbone': '../bower_components/backbone/backbone',
       'thorax': '../bower_components/thorax/thorax',
-      'bootstrap': '../bower_components/bootstrap/js/bootstrap'
+      'bootstrap': '../bower_components/bootstrap/js/bootstrap',
+      'coffee-script': '../bower_components/coffee-script/index',
+      'cs': '../bower_components/require-cs/cs'
     },
     shim: {
       'handlebars': {
