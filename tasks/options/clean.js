@@ -11,7 +11,7 @@ module.exports = {
     grunt.config('paths.output.css')
   ],
   production: [
-    grunt.config('paths.tmpDist'),
+    grunt.config('paths.tmp'),
     grunt.config('paths.dist') + '/*',
     '!' + grunt.config('paths.dist') + '/index.html'
   ]

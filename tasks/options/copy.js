@@ -9,17 +9,19 @@ module.exports = {
       }
     ]
   },
-  tmpDist: { // copy files to tmpDist/ prior to creating a production build
+  // copy baseUrl(js/) to tmp before building with r.js optimzer
+  // templates are not raw copied, they are pre-processed to tmp/templates
+  baseUrl: {
     files: [
-      { // copy js to tmpDist/ before compiling
+      { // copy js to tmp/ before compiling
         expand: true,
         cwd: grunt.config('paths.js'),
         src: ['**', '!templates/**'],
-        dest: grunt.config('paths.tmpDist')
+        dest: grunt.config('paths.tmp')
       },
-      { // copy almond to tmpDist/ before compiling
+      { // copy almond to tmp/ before compiling
         src: 'bower_components/almond/almond.js',
-        dest: grunt.config('paths.tmpDist') + '/almond.js'
+        dest: grunt.config('paths.tmp') + '/almond.js'
       }
     ]
   },

@@ -8,7 +8,7 @@
 //     debugging experience.
 //
 // In production:
-//   - the process is similar but outputs to tmpDist before running the r.js
+//   - the process is similar but outputs to tmp before running the r.js
 //     optimizer
 //   - The final ouput is wrapped in almond.js and concatenated + minified to
 //     dist/main.js.
@@ -82,7 +82,7 @@ function getRequireJSOptions(env) {
     almond: true,
     name: 'requireLib',
     include: ['main'],
-    baseUrl: grunt.config('paths.tmpDist'),
+    baseUrl: grunt.config('paths.tmp'),
     out: grunt.config('paths.distOutput.js'),
     removeCombined: true,
     findNestedDependencies: true,

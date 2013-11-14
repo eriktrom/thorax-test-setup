@@ -43,8 +43,8 @@ module.exports = function(grunt) {
     paths: {
       'public': 'public',
       dist: 'dist',
-      tmpDist: 'tmpDist',
-      // TODO: change tmpDist to tmp eventually, tmp/js, tmp/templates
+      tmp: 'tmp',
+      // TODO: change tmp to tmp eventually, tmp/js, tmp/templates
       distOutput: {
         js: 'dist/main.js',
       },
@@ -107,8 +107,8 @@ module.exports = function(grunt) {
     'clean:production',
     'styles:development',
     'cssmin',
-    'templates:tmpDist',
-    'copy:tmpDist',
+    'templates:tmp',
+    'copy:baseUrl',
     'requirejs:production',
     'open-browser:dist',
     'connect:production'
