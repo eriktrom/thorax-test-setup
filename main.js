@@ -31,6 +31,7 @@
  * We don't want to include the file on the page b/c requirejs will take of that
  * and ensure async happens correctly.
  */
+
 var pathPrefix;
 if (window.__karma__) {
   pathPrefix = '/base/';
@@ -46,9 +47,10 @@ require.config({
     'handlebars': pathPrefix + 'bower_components/handlebars/handlebars.runtime', // test/main.js will override with .runtime version
     'backbone': pathPrefix + 'bower_components/backbone/backbone',
     'thorax': pathPrefix + 'bower_components/thorax/thorax',
-    'templates': pathPrefix + 'tmp/templates',
     'coffee-script': pathPrefix + 'bower_components/coffee-script/index',
-    'cs': pathPrefix + 'bower_components/require-cs/cs'
+    'cs': pathPrefix + 'bower_components/require-cs/cs',
+    // not required for production build
+    'templates': pathPrefix + 'tmp/templates'
   },
   shim: {
     'handlebars': {

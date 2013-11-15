@@ -1,33 +1,20 @@
-// This file builds main.js
-//
-// In development:
-//   - main.js is located in public/ and all .js files are copied
-//   over verbatum from app/js to public/js.
-//   - templates are preprocessed and provided as .js files at public/templates/*.js.
-//   - requirejs is used to resolve modules from files on page load for an easier
-//     debugging experience.
-//
-// In production:
-//   - the process is similar but outputs to tmp before running the r.js
-//     optimizer
-//   - The final ouput is wrapped in almond.js and concatenated + minified to
-//     dist/main.js.
 
-
-// TODO: DRY require.js paths/shims
-// - search everywhere for the above phrase to find them all(or use sublime plugin)
-// The short of it is this isn't needed and is slow, only use for production
-// The long of it is coffeescript support needs to be handled and the duplication
-// of paths and shims needs to be handled.
-// EDIT: coffeescript support could be compile on load
+// TODO: remove build duplication.
+// Right now if a new path is added to your project, you'll need to update the
+// path here as well. This is error prone but currently paths are all extracted
+// to remove duplication between testing/dev environments, which means the main.js
+// file includes javascript but unfortunately mainConfigFile only allows
+// json type format or it throws an error, thus another way to spit out that file
+// is needed, likely using node to read the file in and spit out a version that
+// does not use a variable in the require.config({ ... }). Bummer.
 
 var grunt = require('grunt');
 
 module.exports = {
   production: {
     options: {
-      mainConfigFile: 'build.js',
       baseUrl: 'tmp',
+      // mainConfigFile: 'tmp/main.build.js', // wont work :/ see TODO: remove build duplication
       name: '../bower_components/almond/almond',
       include: ['main'],
       out: 'dist/main.js',
@@ -40,7 +27,6 @@ module.exports = {
         'handlebars': '../bower_components/handlebars/handlebars.runtime',
         'backbone': '../bower_components/backbone/backbone',
         'thorax': '../bower_components/thorax/thorax',
-        // 'templates': './templates',
         'coffee-script': '../bower_components/coffee-script/index',
         'cs': '../bower_components/require-cs/cs'
       },
