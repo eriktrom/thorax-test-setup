@@ -29,13 +29,12 @@
  *
  * Using the conventional <%= paths.output.js %> will NOT work
  *
- * TODO: bad docs for newbs here, make better
  */
 
 module.exports = function(grunt) {
 
   var settings = {
-    liveReloadPort: 35729 || process.env.LRPort,
+    liveReloadPort: process.env.LRPort || 35729,
     port: process.env.PORT || 8000,
     mochaPhantomPort: process.env.MOCHA_PHANTOM_PORT || 8001,
     hostname: 'localhost',
@@ -44,7 +43,6 @@ module.exports = function(grunt) {
       'public': 'public',
       dist: 'dist',
       tmp: 'tmp',
-      // TODO: change tmp to tmp eventually, tmp/js, tmp/templates
       distOutput: {
         js: 'dist/main.js',
       },
@@ -67,26 +65,15 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('thorax-inspector');
   grunt.loadTasks('tasks');
 
-  grunt.registerTask('scripts:development', [
-    // 'clean:scripts',
-    // 'copy:requirejs',
-
-    // TODO(CS: only doing templates makes this super fast
-    // but beware CS support is going to mess up this awesomeness
-    // the current option I have in mind is to just have a coffee/
-    // dir that outputs js and leave the super fastness. That would mean
-    // no public/js or r.js compilation(takes forever) in development at all
-    // EDIT: consider compile on load for dev, fixes complexity problem
-
-    'clean:templates',
-    'templates:tmp'
-
-    // 'requirejs:development' // TODO: ur really slow dude, especially during tdd
-  ]);
-
   grunt.registerTask('styles:development', [
     'clean:styles',
     'styles'
+  ]);
+
+  grunt.registerTask('build', [
+    'ensure-installed',
+    'jshint:all',
+    'templates:tmp'
   ]);
 
   grunt.registerTask('default', [
@@ -95,26 +82,21 @@ module.exports = function(grunt) {
     'thorax:inspector',
     'karma:server',
     'connect:development',
-    // TODO, bug, browser windows don't close themselves, every time you run grunt, new window,
-    // live reload runs in all of them, they all reload, ur system crawls to a halt.
-    'open-browser:dev', // it's convenient :) but leaks memory, cpu cycles :(
+    'open-browser:dev',
     'watch'
   ]);
 
   grunt.registerTask('production', [
-    'jshint:all',
-    'ensure-installed',
     'clean:production',
+    'build',
     'styles:development',
     'cssmin',
-    'templates:tmp',
     'copy:baseUrl',
     'requirejs:production',
     'open-browser:dist',
     'connect:production'
   ]);
 
-  // TODO: clean up test tasks when scripts:development -> templates
   grunt.registerTask('test', [
     'build',
     'karma:ci'
@@ -131,11 +113,7 @@ module.exports = function(grunt) {
     'mocha_phantomjs'
   ]);
 
-  grunt.registerTask('build', [
-    'ensure-installed',
-    'jshint:all',
-    'templates:tmp'
-  ]);
+
 
   require('load-grunt-config')(grunt, {
     configPath: __dirname + '/tasks/options'

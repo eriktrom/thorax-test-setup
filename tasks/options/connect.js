@@ -26,7 +26,7 @@ module.exports = {
   CIServer: {
     options: {
       base: '.',
-      port: grunt.config('mochaPhantomPort'),
+      port: grunt.config('settings.mochaPhantomPort'),
     }
   }
 };
